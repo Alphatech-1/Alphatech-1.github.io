@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: white;
+  font-family: Comfortaa, sans-serif;
+}
+
+h1 {
+  color: #444;
+  text-align: center;
+  font-size: 36px;
+  margin: 20px 0;
+}
+
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-auto-rows: 250px;
+  padding: 20px;
+  grid-gap: 10px;
+  width: 100%;
+  max-width: 1400px;
+  margin: auto;
+  grid-auto-flow: dense;
+}
+
+.gallery__item {
+  position: relative;
+  display: flex;
+}
+
+.gallery__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery__title {
+  position: absolute;
+  bottom: 0;
+  color: white;
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 1));
+  width: 100%;
+  margin: 0;
+  padding: 10px;
+  font-size: 16px;
+}
+
+/* Reorganización de los tamaños de los elementos */
+.gallery__item:nth-child(4),
+.gallery__item:nth-child(7),
+.gallery__item:nth-child(8),
+.gallery__item:nth-child(3),
+.gallery__item:nth-child(2) {
+  grid-row: span 2;
+}
+
+.gallery__item:nth-child(5),
+.gallery__item:nth-child(10) {
+  grid-column: span 2;
+}
+
+.gallery__item:nth-child(15) {
+  grid-row: span 2;
+  grid-column: span 3;
+}
+
+/* Ajustes para pantallas más grandes */
+@media (min-width: 1200px) {
+  .gallery-container {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
+@media (min-width: 1920px) {
+  .gallery-container {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    width: 90%;
+    margin: auto;
+  }
+}
+
+.description-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.description-content {
+  max-width: 80%;
+  padding: 20px;
+  text-align: center;
+  color: #fff;
+}
+
+.description-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.description-text {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.close-button:focus {
+  outline: none;
+}
+
+.gallery__item:hover .description-overlay {
+  opacity: 1;
+  visibility: visible;
+}
